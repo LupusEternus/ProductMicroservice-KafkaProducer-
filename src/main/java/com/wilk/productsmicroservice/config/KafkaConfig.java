@@ -1,4 +1,4 @@
-package com.wilk.productsmicroservice;
+package com.wilk.productsmicroservice.config;
 
 
 import org.apache.kafka.clients.admin.NewTopic;
