@@ -32,7 +32,7 @@ public class ProductServiceImpl implements ProductService {
                 .quantity(productRestModel.getQuantity())
                 .build();
 
-        //Below is code for asynchronously
+        //************Below is code for asynchronously
         /*
         CompletableFuture<SendResult<String,ProductCreatedEvent>> future = kafkaTemplate.send("product-created-events-topic",productID,productCreatedEvent);
         future.whenComplete((result,exception) -> {
@@ -43,7 +43,8 @@ public class ProductServiceImpl implements ProductService {
             }
         });
         */
-        //below is code for synchronously
+
+        //***********below is code for synchronously
 
         LOGGER.info("Before publishing a ProductCreatedEvent ");
 
