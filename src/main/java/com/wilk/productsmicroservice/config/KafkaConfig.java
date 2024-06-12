@@ -39,10 +39,12 @@ public class KafkaConfig {
         config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,bootstrapServer);
         config.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         config.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerialize.class);
-        config.put(ProducerConfig.ACKS_CONFIG,"ALL");
+        config.put(ProducerConfig.ACKS_CONFIG,"all");
         config.put(ProducerConfig.DELIVERY_TIMEOUT_MS_CONFIG,120000);
         config.put(ProducerConfig.LINGER_MS_CONFIG,0);
         config.put(ProducerConfig.REQUEST_TIMEOUT_MS_CONFIG,3000);
+        config.put(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG,true);
+        config.put(ProducerConfig.MAX_IN_FLIGHT_REQUESTS_PER_CONNECTION,5);
 
         return config;
     }
@@ -54,7 +56,7 @@ public class KafkaConfig {
 
     @Bean
     public KafkaTemplate<String,ProductCreatedEvent> kafkaTemplate(){
-        return new KafkaTemplate<String,ProductCreatedEvent>(producerFactory());
+        return new KafkaTemplate<>(producerFactory());
     }
 
 
